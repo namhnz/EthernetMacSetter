@@ -1,0 +1,56 @@
+﻿<Window x:Class="ImportFromXD.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImportFromXD"
+        mc:Ignorable="d"
+        Title="Mac Setter" Height="Auto" Width="Auto" FontSize="20" SizeToContent="WidthAndHeight" SnapsToDevicePixels="True" ResizeMode="NoResize" Closing="Window_Closing"
+        Icon="./Resources/nic.ico">
+    <Window.Resources>
+        <Style x:Key="upperCaseTextBox" TargetType="{x:Type TextBox}">
+            <Setter Property="CharacterCasing" Value="Upper"/>
+        </Style>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+
+    <Grid Height="260" Width="330">
+        <Grid VerticalAlignment="Top" Height="49.958">
+            <Label x:Name="lblCurrent" Content="Current:" HorizontalAlignment="Left" Height="27" Margin="10,10,0,0" VerticalAlignment="Top" Width="74.667" FontSize="20" Padding="0" Foreground="#FF95989A"/>
+            <Label x:Name="lblCurrentValue" Content="28-C2-DD-8C-AF-5E" Height="27" Margin="89.667,10,47.666,0" VerticalAlignment="Top" FontSize="20" Padding="0" Foreground="#FF95989A"/>
+            <Label x:Name="lblRefreshMacButton" Content="&#xE149;" HorizontalAlignment="Right" Height="15" Margin="0,16.583,19.333,0" VerticalAlignment="Top" Width="15" FontSize="15" Padding="0" FontFamily="Segoe MDL2 Assets" Foreground="#FF95989A" MouseLeftButtonDown="lblRefreshMacButton_MouseLeftButtonDown"/>
+            <Rectangle Height="1" VerticalAlignment="Bottom">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="#FF95989A" Opacity="0.2"/>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+        <Grid Name="gridTabLeft" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Label x:Name="lblDirectMacHeader" Content="&#xE117;" HorizontalAlignment="Left" Height="20" Margin="70.667,59.667,0,0" VerticalAlignment="Top" Width="20" FontSize="20" FontFamily="Segoe MDL2 Assets" Padding="0" Foreground="#FF95989A"/>
+            <Rectangle Height="41" Margin="0,49,0,0" VerticalAlignment="Top" Width="165" HorizontalAlignment="Left" MouseLeftButtonDown="Rectangle_TabLeft_MouseLeftButtonDown" Fill="Transparent"/>
+        </Grid>
+        <Grid Name="gridTabRight" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Label x:Name="lblFromFileHeader" Content="&#xE82D;" HorizontalAlignment="Right" Height="20" Margin="0,59.667,72,0" VerticalAlignment="Top" Width="20" FontSize="20" FontFamily="Segoe MDL2 Assets" Padding="0" Foreground="#FF95989A"/>
+            <Rectangle Height="41" Margin="0,49,0,0" VerticalAlignment="Top" Width="165" HorizontalAlignment="Right" Fill="Transparent" MouseLeftButtonDown="Rectangle_TabRight_MouseLeftButtonDown"/>
+        </Grid>
+        <Grid Name="gridDirectMac" Margin="0,90,0,40.5" d:IsHidden="False" Visibility="Visible">
+            <TextBox x:Name="txtNewMac" Style="{StaticResource upperCaseTextBox}" Margin="61.667,47.4,17,0" FontSize="20" HorizontalContentAlignment="Center" Padding="2" VerticalAlignment="Top" Foreground="#FF95989A"/>
+            <Label x:Name="lblNew" Content="New" HorizontalAlignment="Left" Margin="10,48.4,0,0" FontSize="20" Padding="0" Foreground="#FF95989A" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+            <Rectangle Fill="#FF0050C5" HorizontalAlignment="Left" Height="3" VerticalAlignment="Top" Width="165"/>
+        </Grid>
+
+        <Grid Name="gridFromFileMac" Margin="0,90,0,40.5" d:IsHidden="True" Visibility="Hidden">
+            <TextBox x:Name="txtFile" IsReadOnly="True" Margin="93,47,47,0" FontSize="20" HorizontalContentAlignment="Center" Padding="2,2,20,2" VerticalAlignment="Top" Foreground="#FF95989A" TextChanged="txtFile_TextChanged"/>
+            <Label x:Name="lblFromFile" Content="From file" HorizontalAlignment="Left" Margin="10,48.4,0,0" FontSize="20" Padding="0" Foreground="#FF95989A" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Top"/>
+            <Rectangle Fill="#FF0050C5" Height="3" VerticalAlignment="Top" HorizontalAlignment="Right" Width="165" d:LayoutOverrides="HorizontalAlignment"/>
+            <Label x:Name="lblBrowseFileButton" Content="&#xE122;" HorizontalAlignment="Right" Height="20" Margin="0,54,14,0" VerticalAlignment="Top" Width="20" FontSize="20" FontFamily="Segoe MDL2 Assets" Padding="0" Foreground="#FF95989A" MouseLeftButtonDown="lblBrowseFileButton_MouseLeftButtonDown"/>
+            <Label x:Name="lblClear_txtFile" Content="&#xE106;" Visibility="Hidden" HorizontalAlignment="Right" Height="10" Margin="0,58,53,0" VerticalAlignment="Top" Width="10" FontSize="10" Padding="0" FontFamily="Segoe MDL2 Assets" Foreground="#FF95989A" MouseLeftButtonDown="lblClear_txtFile_MouseLeftButtonDown"/>
+        </Grid>
+        <Grid x:Name="gridChange" Height="41" VerticalAlignment="Bottom" MouseLeftButtonDown="gridChange_MouseLeftButtonDown">
+            <Rectangle Fill="#FF0050C5" Height="41" VerticalAlignment="Bottom" />
+            <Label x:Name="lblChange" Content="Change" HorizontalAlignment="Left" Margin="120.833,0,0,10" VerticalAlignment="Bottom" FontSize="20" Padding="0" Foreground="White"/>
+            <Label x:Name="lblRightArrowIcon" Content="&#xE26B;" Height="20" Margin="0,0,116.73,10" VerticalAlignment="Bottom" FontSize="20" FontFamily="Segoe MDL2 Assets" Padding="0" Foreground="White" HorizontalAlignment="Right" Width="20"/>
+        </Grid>
+
+    </Grid>
+</Window>
